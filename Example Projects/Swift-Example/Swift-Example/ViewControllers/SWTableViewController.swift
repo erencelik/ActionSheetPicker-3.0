@@ -37,18 +37,27 @@ class SWTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func DatePickerClicked(_ sender: UIButton) {
 
-        let datePicker = ActionSheetDatePicker(title: "Date:", datePickerMode: UIDatePickerMode.date, selectedDate: Date(), doneBlock: {
+        let datePicker = ActionSheetDatePicker(title: "AGE", datePickerMode: UIDatePickerMode.date, selectedDate: Date(), doneBlock: {
             picker, value, index in
-
             print("value = \(value)")
             print("index = \(index)")
             print("picker = \(picker)")
             return
         }, cancel: { ActionStringCancelBlock in return }, origin: sender.superview!.superview)
+        let doneButton = UIButton()
+        doneButton.setTitle("DONE", for: .normal)
+        doneButton.setTitleColor(UIColor.red, for: .normal)
+        doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        let doneButtonItem = UIBarButtonItem(customView: doneButton)
+        datePicker?.setDoneButton(doneButtonItem)
+        let cancelButton = UIButton()
+        cancelButton.setImage(UIImage(named: "close"), for: .normal)
+        let cancelButtonItem = UIBarButtonItem(customView: cancelButton)
+        datePicker?.setCancelButton(cancelButtonItem)
+        datePicker?.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)]
         let secondsInWeek: TimeInterval = 7 * 24 * 60 * 60;
         datePicker?.minimumDate = Date(timeInterval: -secondsInWeek, since: Date())
         datePicker?.maximumDate = Date(timeInterval: secondsInWeek, since: Date())
-
         datePicker?.show()
     }
 
