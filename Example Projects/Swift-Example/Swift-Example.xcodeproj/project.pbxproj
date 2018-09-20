@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10990A162152BDEB0000B614 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */; };
+		10990A172152BDF50000B614 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C5784521B15BE2C00172D8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784511B15BE2C00172D8A /* AppDelegate.swift */; };
 		1C5784571B15BE2C00172D8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5784551B15BE2C00172D8A /* Main.storyboard */; };
 		1C5784591B15BE2C00172D8A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5784581B15BE2C00172D8A /* Images.xcassets */; };
 		1C57845C1B15BE2C00172D8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C57845A1B15BE2C00172D8A /* LaunchScreen.xib */; };
 		1C5784681B15BE2C00172D8A /* Swift_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784671B15BE2C00172D8A /* Swift_ExampleTests.swift */; };
 		1C5784721B15BE8900172D8A /* SWTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784711B15BE8900172D8A /* SWTableViewController.swift */; };
-		1C82C2D51C930C2B00F9520C /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C82C2D41C930C2B00F9520C /* CoreActionSheetPicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				10990A172152BDF50000B614 /* CoreActionSheetPicker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreActionSheetPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C57844C1B15BE2C00172D8A /* Swift-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5784501B15BE2C00172D8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C5784511B15BE2C00172D8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		1C5784661B15BE2C00172D8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C5784671B15BE2C00172D8A /* Swift_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_ExampleTests.swift; sourceTree = "<group>"; };
 		1C5784711B15BE8900172D8A /* SWTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWTableViewController.swift; path = ViewControllers/SWTableViewController.swift; sourceTree = "<group>"; };
-		1C82C2D41C930C2B00F9520C /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = "../../CoreActionSheetPicker/build/Debug-iphoneos/CoreActionSheetPicker.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C82C2D51C930C2B00F9520C /* CoreActionSheetPicker.framework in Frameworks */,
+				10990A162152BDEB0000B614 /* CoreActionSheetPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,13 +74,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10990A142152BDEB0000B614 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1C5784431B15BE2C00172D8A = {
 			isa = PBXGroup;
 			children = (
-				1C82C2D41C930C2B00F9520C /* CoreActionSheetPicker.framework */,
 				1C57844E1B15BE2C00172D8A /* Swift-Example */,
 				1C5784641B15BE2C00172D8A /* Swift-ExampleTests */,
 				1C57844D1B15BE2C00172D8A /* Products */,
+				10990A142152BDEB0000B614 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,6 +190,7 @@
 				TargetAttributes = {
 					1C57844B1B15BE2C00172D8A = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QG86F5WZHN;
 						LastSwiftMigration = 0830;
 					};
 					1C5784601B15BE2C00172D8A = {
@@ -381,10 +392,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "";
+				DEVELOPMENT_TEAM = QG86F5WZHN;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = "Swift-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SW.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "SW.Swift-Example.ERN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -394,10 +406,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "";
+				DEVELOPMENT_TEAM = QG86F5WZHN;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = "Swift-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "SW.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "SW.Swift-Example.ERN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

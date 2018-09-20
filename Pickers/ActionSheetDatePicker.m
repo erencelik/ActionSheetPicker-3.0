@@ -157,6 +157,7 @@
 - (UIView *)configuredPickerView {
     CGRect datePickerFrame = CGRectMake(0, 40, self.viewSize.width, 216);
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:datePickerFrame];
+    datePicker.backgroundColor = [UIColor whiteColor];
     datePicker.datePickerMode = self.datePickerMode;
     datePicker.maximumDate = self.maximumDate;
     datePicker.minimumDate = self.minimumDate;
@@ -164,7 +165,10 @@
     datePicker.calendar = self.calendar;
     datePicker.timeZone = self.timeZone;
     datePicker.locale = self.locale;
-
+    
+    //Set Color of Date Picker
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
     // if datepicker is set with a date in countDownMode then
     // 1h is added to the initial countdown
     if (self.datePickerMode == UIDatePickerModeCountDownTimer) {

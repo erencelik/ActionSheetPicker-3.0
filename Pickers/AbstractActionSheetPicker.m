@@ -150,16 +150,13 @@ CG_INLINE BOOL isIPhone4() {
         }
 #pragma clang diagnostic pop
 
-        UIBarButtonItem *sysDoneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self
-                                                             action:@selector(actionPickerDone:)];
-
-        UIBarButtonItem *sysCancelButton = [self createButtonWithType:UIBarButtonSystemItemCancel target:self
-                                                               action:@selector(actionPickerCancel:)];
+        UIBarButtonItem *sysDoneButton = [self createButtonWithTitle:@"DONE" target:self action:@selector(actionPickerDone:)];
+        UIBarButtonItem *sysCancelButton = [self createButtonWithTitle:@"CLOSE" target:self action:@selector(actionPickerCancel:)];
 
         [self setCancelBarButtonItem:sysCancelButton];
         [self setDoneBarButtonItem:sysDoneButton];
 
-        self.tapDismissAction = TapActionNone;
+        self.tapDismissAction = TapActionCancel;
         //allows us to use this without needing to store a reference in calling class
         self.selfReference = self;
 
@@ -237,11 +234,12 @@ CG_INLINE BOOL isIPhone4() {
 #pragma mark - Actions
 
 - (void)showActionSheetPicker {
-    UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, 260)];
+    // Edited
+    UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, 270)];
 
     // to fix bug, appeared only on iPhone 4 Device: https://github.com/skywinder/ActionSheetPicker-3.0/issues/5
     if (isIPhone4()) {
-        masterView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
+        masterView.backgroundColor = [UIColor whiteColor];
     }
     self.toolbar = [self createPickerToolbarWithTitle:self.title];
     [masterView addSubview:self.toolbar];
@@ -259,9 +257,21 @@ CG_INLINE BOOL isIPhone4() {
         [masterView insertSubview:leftEdge atIndex:0];
         [masterView insertSubview:rightEdge atIndex:0];
     }
-
+    
     self.pickerView = [self configuredPickerView];
     NSAssert(_pickerView != NULL, @"Picker view failed to instantiate, perhaps you have invalid component data.");
+    [self.pickerView setBackgroundColor:[UIColor whiteColor]];
+    /*
+    UIColor *textColor = [UIColor redColor];
+    [self.pickerView setValue:textColor forKey:@"textColor"];
+    if ([self.pickerView respondsToSelector:sel_registerName("setHighlightsToday:")]) {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wundeclared-selector"
+        [self.pickerView performSelector:@selector(setHighlightsToday:) withObject:[NSNumber numberWithBool:NO]];
+        #pragma clang diagnostic pop
+    }
+    */
+    
     // toolbar hidden remove the toolbar frame and update pickerview frame
     if (self.toolbar.hidden) {
         int halfWidth = (int) (_borderWidth * 0.5f);
@@ -472,10 +482,12 @@ CG_INLINE BOOL isIPhone4() {
     CGRect frame = CGRectMake(0, 0, self.viewSize.width, 44);
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:frame];
     pickerToolbar.barStyle = (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? UIBarStyleDefault : UIBarStyleBlackTranslucent;
-
-    pickerToolbar.barTintColor = self.toolbarBackgroundColor;
+    pickerToolbar.barTintColor = [UIColor whiteColor]; //self.toolbarBackgroundColor;
     pickerToolbar.tintColor = self.toolbarButtonsColor;
-
+    pickerToolbar.clipsToBounds = YES;
+    pickerToolbar.layer.masksToBounds = YES;
+    pickerToolbar.layer.cornerRadius = 11.0;
+    pickerToolbar.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
 
     if (!self.hideCancel) {
@@ -571,6 +583,21 @@ CG_INLINE BOOL isIPhone4() {
 
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:type target:target
                                                                                action:buttonAction];
+    barButton.tintColor = [UIColor redColor];
+    return barButton;
+}
+
+- (UIBarButtonItem *)createButtonWithTitle:(NSString *)title target:(id)target action:(SEL)buttonAction {
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:target action:buttonAction];
+    barButton.tintColor = [UIColor redColor];
+    return barButton;
+}
+
+- (UIBarButtonItem *)createButtonWithImage:(UIImage *)image target:(id)target action:(SEL)buttonAction {
+    UIButton *button = [[UIButton alloc] init];
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:buttonAction forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     return barButton;
 }
 

@@ -110,7 +110,9 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
         _windowLevel = windowLevel;
         self.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.0f];
         _bgView = [UIView new];
-        _bgView.backgroundColor = [UIColor colorWithRed:247.f/255.f green:247.f/255.f blue:247.f/255.f alpha:1.0f];
+        _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView.layer.cornerRadius = 11.0;
+        _bgView.clipsToBounds = YES;
         [self addSubview:_bgView];
         [self addSubview:view];
     }
