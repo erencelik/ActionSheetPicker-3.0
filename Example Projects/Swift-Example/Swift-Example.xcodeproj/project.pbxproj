@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10990A162152BDEB0000B614 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */; };
-		10990A172152BDF50000B614 /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		10C1523F2153D8890062339B /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C1523E2153D8890062339B /* CoreActionSheetPicker.framework */; };
+		10C152402153D88E0062339B /* CoreActionSheetPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10C1523E2153D8890062339B /* CoreActionSheetPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C5784521B15BE2C00172D8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784511B15BE2C00172D8A /* AppDelegate.swift */; };
 		1C5784571B15BE2C00172D8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5784551B15BE2C00172D8A /* Main.storyboard */; };
 		1C5784591B15BE2C00172D8A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5784581B15BE2C00172D8A /* Images.xcassets */; };
@@ -34,7 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				10990A172152BDF50000B614 /* CoreActionSheetPicker.framework in Embed Frameworks */,
+				10C152402153D88E0062339B /* CoreActionSheetPicker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreActionSheetPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10C1523E2153D8890062339B /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreActionSheetPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C57844C1B15BE2C00172D8A /* Swift-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5784501B15BE2C00172D8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C5784511B15BE2C00172D8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10990A162152BDEB0000B614 /* CoreActionSheetPicker.framework in Frameworks */,
+				10C1523F2153D8890062339B /* CoreActionSheetPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 		10990A142152BDEB0000B614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10990A152152BDEB0000B614 /* CoreActionSheetPicker.framework */,
+				10C1523E2153D8890062339B /* CoreActionSheetPicker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

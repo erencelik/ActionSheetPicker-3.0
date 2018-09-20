@@ -30,6 +30,7 @@
 @interface ActionSheetStringPicker()
 @property (nonatomic,strong) NSArray *data;
 @property (nonatomic,assign) NSInteger selectedIndex;
+@property (nonatomic,assign) NSInteger currentIndex;
 @end
 
 @implementation ActionSheetStringPicker
@@ -60,6 +61,7 @@
     if (self) {
         self.data = data;
         self.selectedIndex = index;
+        self.currentIndex = index;
         self.title = title;
     }
     return self;
@@ -121,6 +123,12 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.selectedIndex = row;
+    self.currentIndex = row;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+//        self.selectedLabel.attributedText = [[NSAttributedString alloc] initWithString:@"XDDDD" attributes:self.pickerSelectedTextAttributes];
+//        //[(UIPickerView *)self.pickerView reloadAllComponents];
+//    });
+    [pickerView reloadAllComponents];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -131,67 +139,26 @@
     return self.data.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    id obj = (self.data)[(NSUInteger) row];
-    
-    // return the object if it is already a NSString,
-    // otherwise, return the description, just like the toString() method in Java
-    // else, return nil to prevent exception
-
-    if ([obj isKindOfClass:[NSString class]])
-        return obj;
-
-    if ([obj respondsToSelector:@selector(description)])
-        return [obj performSelector:@selector(description)];
-    return nil;
-}
-
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    id obj = (self.data)[(NSUInteger) row];
-    
-    // return the object if it is already a NSString,
-    // otherwise, return the description, just like the toString() method in Java
-    // else, return nil to prevent exception
-    
-    if ([obj isKindOfClass:[NSString class]])
-        return [[NSAttributedString alloc] initWithString:obj attributes:self.pickerTextAttributes];
-    
-    if ([obj respondsToSelector:@selector(description)])
-        return [[NSAttributedString alloc] initWithString:[obj performSelector:@selector(description)] attributes:self.pickerTextAttributes];
-    
-    return nil;
-}
-
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UILabel *pickerLabel = (UILabel *)view;
     if (pickerLabel == nil) {
         pickerLabel = [[UILabel alloc] init];
     }
     id obj = (self.data)[(NSUInteger) row];
-    if ([super actionSheet]) {
-        self.selectedIndex = row;
-        NSLog(@"pickerViewForRow:%@", obj);
-    }
-    NSAttributedString *attributeTitle = nil;
-    // use the object if it is already a NSString,
-    // otherwise, use the description, just like the toString() method in Java
-    // else, use String with no text to ensure this delegate do not return a nil value.
-    
-    if ([obj isKindOfClass:[NSString class]])
-        attributeTitle = [[NSAttributedString alloc] initWithString:obj attributes:self.pickerTextAttributes];
-    
-    if ([obj respondsToSelector:@selector(description)])
-        attributeTitle = [[NSAttributedString alloc] initWithString:[obj performSelector:@selector(description)] attributes:self.pickerTextAttributes];
-    
-    if (attributeTitle == nil) {
-        attributeTitle = [[NSAttributedString alloc] initWithString:@"" attributes:self.pickerTextAttributes];
-    }
+    NSAttributedString *attributeTitle = [[NSAttributedString alloc] initWithString:obj attributes:(row == self.currentIndex ? self.pickerSelectedTextAttributes : self.pickerTextAttributes)];
     pickerLabel.attributedText = attributeTitle;
+    if (self.selectedIndex != row) {
+        self.selectedIndex = row;
+    }
     return pickerLabel;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     return pickerView.frame.size.width - 30;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 60.0f;
 }
 
 @end

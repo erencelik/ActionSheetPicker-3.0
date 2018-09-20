@@ -108,7 +108,7 @@ class SWTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @IBAction func navigationItemPicker(_ sender: UIBarButtonItem) {
-        let picker = ActionSheetStringPicker(title: "Nav Bar From Picker", rows: ["One", "Two", "A lot"], initialSelection: 1, doneBlock: {
+        let picker = ActionSheetStringPicker(title: "GENDER", rows: ["Female", "Male", "Both"], initialSelection: 1, doneBlock: {
             picker, value, index in
 
             print("value = \(value)")
@@ -116,7 +116,10 @@ class SWTableViewController: UITableViewController, UITextFieldDelegate {
             print("picker = \(picker)")
             return
         }, cancel: { ActionStringCancelBlock in return }, origin: sender)
-        picker?.pickerTextAttributes = [NSForegroundColorAttributeName: UIColor.purple, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 32)]
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        picker?.pickerTextAttributes = [NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 16)]
+        picker?.pickerSelectedTextAttributes = [NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: UIColor.red, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18)]
         picker?.show()
     }
 
