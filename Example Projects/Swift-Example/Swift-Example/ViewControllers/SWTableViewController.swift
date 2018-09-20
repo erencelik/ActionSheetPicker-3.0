@@ -108,7 +108,7 @@ class SWTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @IBAction func navigationItemPicker(_ sender: UIBarButtonItem) {
-        ActionSheetStringPicker.show(withTitle: "Nav Bar From Picker", rows: ["One", "Two", "A lot"], initialSelection: 1, doneBlock: {
+        let picker = ActionSheetStringPicker(title: "Nav Bar From Picker", rows: ["One", "Two", "A lot"], initialSelection: 1, doneBlock: {
             picker, value, index in
 
             print("value = \(value)")
@@ -116,6 +116,8 @@ class SWTableViewController: UITableViewController, UITextFieldDelegate {
             print("picker = \(picker)")
             return
         }, cancel: { ActionStringCancelBlock in return }, origin: sender)
+        picker?.pickerTextAttributes = [NSForegroundColorAttributeName: UIColor.purple, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 32)]
+        picker?.show()
     }
 
     @IBAction func multipleStringPickerClicked(_ sender: UIButton) {

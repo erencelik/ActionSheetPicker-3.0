@@ -156,7 +156,7 @@ CG_INLINE BOOL isIPhone4() {
         [self setCancelBarButtonItem:sysCancelButton];
         [self setDoneBarButtonItem:sysDoneButton];
 
-        self.tapDismissAction = TapActionNone;
+        self.tapDismissAction = TapActionCancel;
         //allows us to use this without needing to store a reference in calling class
         self.selfReference = self;
 

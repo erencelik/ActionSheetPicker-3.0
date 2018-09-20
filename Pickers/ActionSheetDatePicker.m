@@ -166,6 +166,9 @@
     datePicker.timeZone = self.timeZone;
     datePicker.locale = self.locale;
     
+    //Set Color of Date Picker
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
     // if datepicker is set with a date in countDownMode then
     // 1h is added to the initial countdown
     if (self.datePickerMode == UIDatePickerModeCountDownTimer) {
