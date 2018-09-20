@@ -133,7 +133,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     id obj = (self.data)[(NSUInteger) row];
-
+    
     // return the object if it is already a NSString,
     // otherwise, return the description, just like the toString() method in Java
     // else, return nil to prevent exception
@@ -143,7 +143,6 @@
 
     if ([obj respondsToSelector:@selector(description)])
         return [obj performSelector:@selector(description)];
-    
     return nil;
 }
 
@@ -169,7 +168,10 @@
         pickerLabel = [[UILabel alloc] init];
     }
     id obj = (self.data)[(NSUInteger) row];
-    
+    if ([super actionSheet]) {
+        self.selectedIndex = row;
+        NSLog(@"pickerViewForRow:%@", obj);
+    }
     NSAttributedString *attributeTitle = nil;
     // use the object if it is already a NSString,
     // otherwise, use the description, just like the toString() method in Java
